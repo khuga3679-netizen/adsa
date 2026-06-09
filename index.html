@@ -2067,8 +2067,7 @@ document.getElementById("modal-backdrop").addEventListener("click", closeModal)
 document.addEventListener("keydown", e => {
   if (!modal.classList.contains("open")) return
   if (e.key === "Escape") closeModal()
-  if (e.key === "ArrowRight") navModal(1)
-  if (e.key === "ArrowLeft")  navModal(-1)
+
 })
 
 function visibleIndices() {
@@ -2097,13 +2096,7 @@ function updateMobileNav() {
 updateMobileNav()
 window.addEventListener("resize", updateMobileNav)
 
-// ── Swipe to navigate modal ──
-let touchStartX = 0
-document.getElementById("modal-box").addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX }, { passive: true })
-document.getElementById("modal-box").addEventListener("touchend", e => {
-  const dx = e.changedTouches[0].clientX - touchStartX
-  if (Math.abs(dx) > 60) navModal(dx < 0 ? 1 : -1)
-}, { passive: true })
+// Swipe to navigate modal — disabled (ใช้ปุ่มเท่านั้น)
 
 // ── Image Lightbox with pinch-zoom ──
 const imgLightbox = document.getElementById("img-lightbox")
